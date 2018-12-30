@@ -162,7 +162,18 @@
                 $("#jqxwindow").jqxWindow('close');
 
                 // TEST set data from server
-                download(function (data) { $("#grid").jqxGrid({ source: getAdapterJson(data) }); }, 0, 50);
+                download(function (data) {
+                    var columns = [
+                        { text: 'Nombre', columntype: 'textbox', datafield: 'firstname', width: 120 },
+                        { text: 'Apellido', datafield: 'lastname', columntype: 'textbox', width: 120 },
+                        { text: 'Producto', datafield: 'productname', width: 170 },
+                        { text: 'En Stock', datafield: 'available', columntype: 'checkbox', width: 125 },
+                        { text: 'Cantidas', datafield: 'quantity', width: 85, cellsalign: 'right', cellsformat: 'n2' },
+                        { text: 'Precio', datafield: 'price', cellsalign: 'right', cellsformat: 'c2' }
+                    ];
+
+                    $("#grid").jqxGrid({ source: getAdapterJson(data), columns: columns });
+                }, 0, 50);
             });
         });
     </script>
