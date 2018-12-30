@@ -52,6 +52,27 @@
                 return dataAdapter;
             }
 
+            var getAdapterJson = function (data) {
+                var source =
+                    {
+                        localdata: data,
+                        datatype: 'json',
+                        datafields:
+                            [
+                                { name: 'firstname', type: 'string' },
+                                { name: 'lastname', type: 'string' },
+                                { name: 'productname', type: 'string' },
+                                { name: 'quantity', type: 'number' },
+                                { name: 'price', type: 'number' },
+                                { name: 'available', type: 'bool' }
+                            ],
+                        updaterow: function (rowid, rowdata, commit) { commit(true); }
+                    };
+
+                var dataAdapter = new $.jqx.dataAdapter(source);
+                return dataAdapter;
+            }
+
             // initialize jqxGrid
             $("#grid").jqxGrid(
                 {
@@ -140,8 +161,8 @@
                 var searchText = $("#inputField").val();
                 $("#jqxwindow").jqxWindow('close');
 
-                // TODO get json data
-                download((data) => { alert('OK'); }, 0, 50);
+                // TEST set data from server
+                download(function (data) { $("#grid").jqxGrid({ source: getAdapterJson(data) }); }, 0, 50);
             });
         });
     </script>

@@ -6,6 +6,24 @@ using System.Web;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Newtonsoft.Json;
+
+public class RowData
+{
+    public string firstname, lastname, productname;
+    public float quantity, price;
+    public bool available;
+
+    public RowData(string firstname, string lastname, string productname)
+    {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.productname = productname;
+        this.quantity = 5;
+        this.price = 59;
+        this.available = quantity > 0;
+    }
+}
 
 public partial class _Default : System.Web.UI.Page
 {
@@ -15,7 +33,12 @@ public partial class _Default : System.Web.UI.Page
     }
 
     [WebMethod]
-    public static string GetJson(int page, int pageSize) => "{\"result\":\"OK\"}";
+    public static string GetJson(int page, int pageSize)
+    {
+        var data = new List<RowData> { new RowData("Salomon", "Sanchez", "iSoftware") };
+        var json = JsonConvert.SerializeObject(data);
+        return "{\"header\":{\"hash\":\"111222333444\"},\"data\":" + json + "}";
+    }
 
     public void Download()
     {
