@@ -5,6 +5,23 @@
     <script type="text/javascript" src="Scripts/demos.js"></script>
     <script type="text/javascript" src="Scripts/generatedata.js"></script>
     <script type="text/javascript">
+
+        function download(callback, page, pageSize) {
+            $.ajax({
+                type: 'POST',
+                url: 'Default.aspx/GetJson',
+                data: JSON.stringify({ 'page': page, 'pageSize': pageSize }),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (response) {
+                    callback(JSON.parse(response.d));
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert('No se ha podido obtener la información');
+                }
+            });
+        }
+
         $(document).ready(function () {
             var getAdapter = function () {
                 // prepare the data
@@ -13,7 +30,7 @@
                 var source =
                     {
                         localdata: data,
-                        datatype: "array",
+                        datatype: 'array',
                         datafields:
                             [
                                 { name: 'firstname', type: 'string' },
@@ -122,6 +139,9 @@
 
                 var searchText = $("#inputField").val();
                 $("#jqxwindow").jqxWindow('close');
+
+                // TODO get json data
+                download((data) => { alert('OK'); }, 0, 50);
             });
         });
     </script>
