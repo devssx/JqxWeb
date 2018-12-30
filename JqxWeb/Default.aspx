@@ -40,6 +40,10 @@
                 {
                     width: getWidth('Grid'),
                     source: getAdapter(),
+                    pageable: true,
+                    pageSize: 20,
+                    pagesizeoptions: ['20', '50', '100'],
+                    autoheight: true,
                     showtoolbar: true,
                     rendertoolbar: function (statusbar) {
                         // appends buttons to the status bar.
@@ -77,7 +81,7 @@
                 });
 
             // create jqxWindow.
-            $("#jqxwindow").jqxWindow({ resizable: false, autoOpen: false, width: 210, height: 195 });
+            $("#jqxwindow").jqxWindow({ draggable: false, resizable: false, autoOpen: false, width: 210, height: 195 });
             // create find and clear buttons.
             $("#findButton").jqxButton({ width: 70, height: 16 });
 
@@ -118,7 +122,6 @@
 
                 var searchText = $("#inputField").val();
                 $("#jqxwindow").jqxWindow('close');
-                alert('Buscar: ' + searchText + ' en ' + datafield);
             });
         });
     </script>

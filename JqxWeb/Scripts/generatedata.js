@@ -1,7 +1,7 @@
 ﻿function generatedata(rowscount, hasNullValues) {
     // prepare the data
     var data = new Array();
-    if (rowscount == undefined) rowscount = 100;
+    if (rowscount === undefined) rowscount = 100;
     var firstNames =
     [
         "Andrew", "Nancy", "Shelley", "Regina", "Yoshi", "Antoni", "Mayumi", "Ian", "Peter", "Lars", "Petra", "Martin", "Sven", "Elio", "Beate", "Cheryl", "Michael", "Guylene"
@@ -29,11 +29,11 @@
         var quantity = 1 + Math.round(Math.random() * 10);
 
         row["id"] = i;
-        row["available"] = productindex % 2 == 0;
-        if (hasNullValues == true) {
-            if (productindex % 2 != 0) {
+        row["available"] = (productindex % 2) === 0;
+        if (hasNullValues) {
+            if ((productindex % 2) !== 0) {
                 var random = Math.floor(Math.random() * rowscount);
-                row["available"] = i % random == 0 ? null : false;
+                row["available"] = (i % random) === 0 ? null : false;
             }
         }
         row["firstname"] = firstNames[Math.floor(Math.random() * firstNames.length)];
@@ -189,7 +189,7 @@ function generatecarsdata() {
           row.fuelType = fuelType[Math.floor(Math.random() * fuelType.length)];
           row.vehicleType = vehicleType[Math.floor(Math.random() * vehicleType.length)];
           var powerIndex = Math.floor(Math.random() * power.length);
-          if (powerIndex == power.length - 1) powerIndex --;
+          if (powerIndex === power.length - 1) powerIndex --;
           row.powerFrom = power[powerIndex];
           row.powerTo = power[powerIndex + 1];
           data.push(row);

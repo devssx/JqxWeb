@@ -20,6 +20,7 @@
     <script type="text/javascript" src="jqwidgets/jqxdropdownlist.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxcheckbox.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxwindow.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxgrid.pager.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 </head>
 <body class="default">
