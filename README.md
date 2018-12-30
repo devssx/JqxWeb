@@ -1,2 +1,2 @@
 # JqxWeb
-This project contains some examples of JQX with ASP.neet
+This project contains some examples of JQX with ASP.net
