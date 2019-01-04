@@ -32,10 +32,17 @@ public partial class _Default : System.Web.UI.Page
 
     }
 
+    private static dynamic Select() {
+        dynamic obj = new System.Dynamic.ExpandoObject();
+        obj.Age = 61;
+        obj.Name = "ConverterJS";
+        return obj;
+    }
+
     [WebMethod]
     public static string GetJson(int page, int pageSize)
     {
-        var data = new List<RowData> { new RowData("Salomon", "Sanchez", "iSoftware") };
+        var data = new List<dynamic> { new RowData("Salomon", "Sanchez", "iSoftware"), Select() };
         var json = JsonConvert.SerializeObject(data);
         return "{\"header\":{\"hash\":\"111222333444\"},\"data\":" + json + "}";
     }

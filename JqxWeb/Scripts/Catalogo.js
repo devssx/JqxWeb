@@ -32,7 +32,6 @@
         columnsreorder: false,
         columnsresize: false,
         autoshowfiltericon: false,
-        showtoolbar: false,
         columns: [],
         //virtualmode: true,
         //rendergridrows: renderGridRows,
